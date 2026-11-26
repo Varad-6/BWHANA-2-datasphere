@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-11-26T10:40:00.000Z" agent="BW-Morph-Architect" version="22.1.0" type="device">
+  <diagram id="bw-morph-horizontal" name="BW Morph Horizontal Pipeline">
+    <mxGraphModel dx="1920" dy="1080" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Header -->
+        <mxCell id="hdr" value="&lt;b&gt;BW Morph: End-to-End Migration Pipeline (T0 to T12)&lt;/b&gt;&lt;br/&gt;&lt;i&gt;Enterprise Solution Architecture | SAP BW/4HANA → SAP Datasphere&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#0F172A;fontColor=#FFFFFF;fontSize=18;align=left;spacingLeft=25;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1840" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 1: Source -->
+        <mxCell id="lane1" value="&lt;b&gt;1. Source: SAP BW/4HANA&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontColor=#334155;fontSize=13;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="1380" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="&lt;b&gt;DataSources&lt;/b&gt;&lt;br/&gt;ROOSOURCE, ODP" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane1">
+          <mxGeometry x="25" y="40" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;InfoObjects&lt;/b&gt;&lt;br/&gt;Attrs, texts, SIDs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane1">
+          <mxGeometry x="355" y="40" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;ADSO, HCPR&lt;/b&gt;&lt;br/&gt;Tables and joins" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane1">
+          <mxGeometry x="685" y="40" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;Logic Layer&lt;/b&gt;&lt;br/&gt;TRFN, BEx, chains" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane1">
+          <mxGeometry x="1015" y="40" width="345" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="s_bar" value="&lt;b&gt;Extraction Interface: RFC (pyrfc) | BAPIs | SAP Cloud Connector | OData DDL&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;fontSize=12;" vertex="1" parent="lane1">
+          <mxGeometry x="25" y="100" width="1335" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 2: F1 Foundation -->
+        <mxCell id="lane2" value="&lt;b&gt;2. F1 Foundation: scan, graph, plan&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F0FDFA;strokeColor=#0D9488;fontColor=#0F766E;fontSize=13;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="1380" height="195" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_t0" value="&lt;b&gt;T0 Scanner&lt;/b&gt;&lt;br/&gt;RFC to JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D9488;fontSize=11;" vertex="1" parent="lane2">
+          <mxGeometry x="25" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_t1" value="&lt;b&gt;T1 Wave Planner&lt;/b&gt;&lt;br/&gt;SCC, topo waves" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D9488;fontSize=11;" vertex="1" parent="lane2">
+          <mxGeometry x="355" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_t2" value="&lt;b&gt;T2 Classifier&lt;/b&gt;&lt;br/&gt;Score 1–5, 7 paths" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D9488;fontSize=11;" vertex="1" parent="lane2">
+          <mxGeometry x="685" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_t3" value="&lt;b&gt;T3 Controller&lt;/b&gt;&lt;br/&gt;Batches, locking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0D9488;fontSize=11;" vertex="1" parent="lane2">
+          <mxGeometry x="1015" y="38" width="345" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_repo" value="&lt;b&gt;Shared Metadata Repository (DuckDB)&lt;/b&gt;&lt;br/&gt;objects, dependencies, transformations, wave_schedule" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#CCFBF1;strokeColor=#0F766E;fontSize=11;" vertex="1" parent="lane2">
+          <mxGeometry x="25" y="98" width="1335" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1_gate" value="✔ Waves ready | Graph resolved | Objects staged" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0D9488;strokeColor=#0F766E;fontColor=#FFFFFF;fontSize=11;fontStyle=1;" vertex="1" parent="lane2">
+          <mxGeometry x="492" y="155" width="400" height="26" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 3: F2 Generators -->
+        <mxCell id="lane3" value="&lt;b&gt;3. F2 Generators: CSN synthesis and transpilation&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#805AD5;fontColor=#553C9E;fontSize=13;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="470" width="1380" height="205" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t4" value="&lt;b&gt;T4 Source Systems&lt;/b&gt;&lt;br/&gt;Path 1: connections" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="25" y="38" width="430" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t5" value="&lt;b&gt;T5 InfoObjects&lt;/b&gt;&lt;br/&gt;Path 2: dims, texts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="475" y="38" width="430" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t6" value="&lt;b&gt;T6 Transformations&lt;/b&gt;&lt;br/&gt;Path 3: SQL + ABAP AST" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="925" y="38" width="435" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t7" value="&lt;b&gt;T7 ADSO&lt;/b&gt;&lt;br/&gt;Path 4: tables, facts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="25" y="92" width="430" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t8" value="&lt;b&gt;T8 CompositeProvider&lt;/b&gt;&lt;br/&gt;Path 5: semantic views" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="475" y="92" width="430" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_t9" value="&lt;b&gt;T9 BEx Queries&lt;/b&gt;&lt;br/&gt;Path 6: analytic models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#805AD5;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="925" y="92" width="435" height="44" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2_csn" value="&lt;b&gt;Compiled CSN Bundle (JSON)&lt;/b&gt;&lt;br/&gt;Validated against CSN v1.0 spec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9D8FD;strokeColor=#6B46C1;fontSize=11;" vertex="1" parent="lane3">
+          <mxGeometry x="25" y="148" width="1335" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 4: F3 Governance -->
+        <mxCell id="lane4" value="&lt;b&gt;4. F3 Governance and deployment&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#FFF7ED;strokeColor=#EA580C;fontColor=#C2410C;fontSize=13;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="690" width="1380" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3_t10" value="&lt;b&gt;T10 Security&lt;/b&gt;&lt;br/&gt;Chains to DAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA580C;fontSize=11;" vertex="1" parent="lane4">
+          <mxGeometry x="25" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3_t11" value="&lt;b&gt;T11 Recon&lt;/b&gt;&lt;br/&gt;Counts, SHA-256" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA580C;fontSize=11;" vertex="1" parent="lane4">
+          <mxGeometry x="355" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3_t12" value="&lt;b&gt;T12 Dashboard&lt;/b&gt;&lt;br/&gt;Streamlit control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA580C;fontSize=11;" vertex="1" parent="lane4">
+          <mxGeometry x="685" y="38" width="310" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3_deploy" value="&lt;b&gt;Deploy Agent&lt;/b&gt;&lt;br/&gt;CLI + REST APIs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EA580C;fontSize=11;" vertex="1" parent="lane4">
+          <mxGeometry x="1015" y="38" width="345" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3_audit" value="&lt;b&gt;Audit and Cutover Log&lt;/b&gt;: Automated artifact deployment timestamps, warnings &amp;amp; backlog tracker" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEDD5;strokeColor=#C2410C;fontSize=11;" vertex="1" parent="lane4">
+          <mxGeometry x="25" y="98" width="1335" height="38" as="geometry"/>
+        </mxCell>
+
+        <!-- Lane 5: Target -->
+        <mxCell id="lane5" value="&lt;b&gt;5. Target: SAP Datasphere&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontColor=#334155;fontSize=13;fontStyle=1;startSize=28;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="855" width="1380" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_space" value="&lt;b&gt;Space&lt;/b&gt;&lt;br/&gt;Quota, roles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane5">
+          <mxGeometry x="25" y="40" width="245" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_tbl" value="&lt;b&gt;Tables&lt;/b&gt;&lt;br/&gt;Dims, texts" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane5">
+          <mxGeometry x="290" y="40" width="245" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_view" value="&lt;b&gt;Views&lt;/b&gt;&lt;br/&gt;Fact, SQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane5">
+          <mxGeometry x="555" y="40" width="255" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_am" value="&lt;b&gt;Models&lt;/b&gt;&lt;br/&gt;SAC, Power BI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane5">
+          <mxGeometry x="830" y="40" width="255" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_tc" value="&lt;b&gt;Task Chains&lt;/b&gt;&lt;br/&gt;Plus DAC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=11;" vertex="1" parent="lane5">
+          <mxGeometry x="1105" y="40" width="255" height="48" as="geometry"/>
+        </mxCell>
+        <mxCell id="t_bar" value="&lt;b&gt;Ingestion Interface: REST Definitions | Task Chains | OData | CLI Import&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;fontSize=12;" vertex="1" parent="lane5">
+          <mxGeometry x="25" y="100" width="1335" height="42" as="geometry"/>
+        </mxCell>
+
+        <!-- Right Notes Panel -->
+        <mxCell id="notes" value="&lt;b&gt;Architecture &amp;amp; Migration Details&lt;/b&gt;&lt;hr/&gt;&lt;br/&gt;&lt;b&gt;1. Source: SAP BW/4HANA&lt;/b&gt;&lt;br/&gt;• Tables: ROOSOURCE, ODQMON, RSDIOBJ, RSDATTR&lt;br/&gt;• Inbound *1, Active *2 &amp;amp; Change log *3 delta tables&lt;br/&gt;• SIDs (/BI0/S*, /BI0/X*, /BI0/Y*) resolved to natural keys&lt;br/&gt;&lt;br/&gt;&lt;b&gt;2. F1 Foundation Layer&lt;/b&gt;&lt;br/&gt;• T0 loads metadata dictionary snapshots into DuckDB&lt;br/&gt;• T1 uses NetworkX DiGraph + Tarjan's SCC for cycles&lt;br/&gt;• T2 scores 1–5 (compounding, ABAP routines, hierarchy)&lt;br/&gt;• T3 stages wave batches and manages prerequisite locks&lt;br/&gt;&lt;br/&gt;&lt;b&gt;3. F2 Generators &amp;amp; Transpilation&lt;/b&gt;&lt;br/&gt;• T4 maps BW source systems to DSP Space Connections&lt;br/&gt;• T5 converts characteristics &amp;amp; texts to #DIMENSION CSN&lt;br/&gt;• T6 transpiles ABAP Start/End/Field routines to SQL Views&lt;br/&gt;• T7 maps ADSOs to #FACT &amp;amp; staging local tables&lt;br/&gt;• T8 translates CompositeProviders into Relational Views&lt;br/&gt;• T9 translates BEx queries to DSP Analytic Models&lt;br/&gt;&lt;br/&gt;&lt;b&gt;4. F3 Governance &amp;amp; Controls&lt;/b&gt;&lt;br/&gt;• T10 translates RSPC chains to Datasphere Task Chains&lt;br/&gt;• T10 converts Analysis Authorizations into DAC policies&lt;br/&gt;• T11 reconciles record counts &amp;amp; SHA-256 metric sums&lt;br/&gt;• T12 Streamlit dashboard acts as master control cockpit&lt;br/&gt;&lt;br/&gt;&lt;b&gt;5. Target: SAP Datasphere&lt;/b&gt;&lt;br/&gt;• Space-level schema isolation and user role governance&lt;br/&gt;• Core CSN v1.0 schema notation for dimensions and facts&lt;br/&gt;• Multidimensional Analytic Models for SAC &amp;amp; Power BI&lt;br/&gt;• Automated Delta Replication via DP Agent &amp;amp; SCC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=10.5;align=left;valign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="90" width="440" height="740" as="geometry"/>
+        </mxCell>
+
+        <!-- Right Legend -->
+        <mxCell id="legend" value="&lt;b&gt;Legend &amp;amp; Visual Conventions&lt;/b&gt;&lt;hr/&gt;&lt;br/&gt;&lt;b&gt;Solid Blue Arrow (2px)&lt;/b&gt;: Primary Data &amp;amp; Metadata Flow&lt;br/&gt;&lt;b&gt;Dashed Orange Arrow (1.5px)&lt;/b&gt;: Reconciliation Loop (T11)&lt;br/&gt;&lt;b&gt;Dashed Gray Arrow (1px)&lt;/b&gt;: Control Plane / Dashboard Trigger&lt;br/&gt;&lt;br/&gt;Canvas: 1920×1080 Landscape | Snap-to-Grid: 10px | Inter / Segoe UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=10.5;align=left;valign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="855" width="440" height="175" as="geometry"/>
+        </mxCell>
+
+        <!-- Solid Connectors -->
+        <mxCell id="e_src_f1" value="Raw metadata" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#2563EB;fontSize=10;fontColor=#1D4ED8;" edge="1" parent="1" source="s_bar" target="f1_t0">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_f1_t3_f2" value="Wave batches + path tags" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#2563EB;fontSize=10;fontColor=#1D4ED8;" edge="1" parent="1" source="f1_t3" target="f2_t6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_f2_f3" value="CSN artifacts" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#2563EB;fontSize=10;fontColor=#1D4ED8;" edge="1" parent="1" source="f2_csn" target="f3_deploy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_f3_target" value="Import definitions" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2.5;strokeColor=#2563EB;fontSize=10;fontColor=#1D4ED8;" edge="1" parent="1" source="f3_deploy" target="t_bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Dashed Reconciliation Arrows -->
+        <mxCell id="e_recon_src" value="Reconciliation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;dashed=1;strokeColor=#EA580C;fontSize=10;fontColor=#C2410C;" edge="1" parent="1" source="f3_t11" target="s2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_recon_tgt" value="Reconciliation" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;dashed=1;strokeColor=#EA580C;fontSize=10;fontColor=#C2410C;" edge="1" parent="1" source="f3_t11" target="t_tbl">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- Control Plane Arrows -->
+        <mxCell id="e_ctrl_t3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;dashed=1;strokeColor=#6B7280;" edge="1" parent="1" source="f3_t12" target="f1_t3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_ctrl_deploy" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.2;dashed=1;strokeColor=#6B7280;" edge="1" parent="1" source="f3_t12" target="f3_deploy">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
