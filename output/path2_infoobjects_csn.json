@@ -5,276 +5,115 @@
     "version": "1.0.0"
   },
   "definitions": {
-    "SAP_BW_MIGRATION.0CUSTOMER": {
+    "ZFAP_BANK_CHAIN_SRV_0001": {
       "kind": "entity",
-      "@EndUserText.label": "Customer Number",
+      "@EndUserText.label": "FAP_BANK_CHAIN_SRV",
       "@Analytics.dataCategory": "#DIMENSION",
       "elements": {
-        "0CUSTOMER": {
+        "ZFAP_BANK_CHAIN_SRV_0001": {
           "key": true,
           "type": "cds.String",
           "length": 10,
-          "@EndUserText.label": "Customer Number"
+          "@EndUserText.label": "FAP_BANK_CHAIN_SRV"
         },
-        "0COUNTRY": {
+        "BkChnBP": {
           "type": "cds.String",
           "length": 10,
-          "@EndUserText.label": "Attribute 0COUNTRY"
+          "@EndUserText.label": "BkChnBP"
         },
-        "0REGION": {
+        "BankIdentification": {
           "type": "cds.String",
-          "length": 10,
-          "@EndUserText.label": "Attribute 0REGION"
+          "length": 4,
+          "@EndUserText.label": "BankIdentification"
         },
-        "to_0COUNTRY": {
-          "type": "cds.Association",
-          "target": "SAP_BW_MIGRATION.0COUNTRY",
-          "on": [
-            {
-              "ref": [
-                "0COUNTRY"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "to_0COUNTRY",
-                "0COUNTRY"
-              ]
-            }
-          ]
-        },
-        "to_0REGION": {
-          "type": "cds.Association",
-          "target": "SAP_BW_MIGRATION.0REGION",
-          "on": [
-            {
-              "ref": [
-                "0REGION"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "to_0REGION",
-                "0REGION"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0CUSTOMER_TEXT": {
-      "kind": "entity",
-      "@EndUserText.label": "Text for Customer Number",
-      "@Analytics.dataCategory": "#TEXT",
-      "elements": {
-        "0CUSTOMER": {
-          "key": true,
+        "BPLastNameSearchHelp": {
           "type": "cds.String",
-          "length": 10,
-          "@EndUserText.label": "Customer Number"
+          "length": 35,
+          "@EndUserText.label": "BPLastNameSearchHelp"
         },
-        "LANGUAGE_CODE": {
-          "key": true,
+        "BPFirstNameSearchHelp": {
           "type": "cds.String",
-          "length": 2,
-          "@EndUserText.label": "Language"
+          "length": 35,
+          "@EndUserText.label": "BPFirstNameSearchHelp"
         },
-        "TXTMD": {
+        "BkChnCountryKeyOfRecipientBank": {
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "BkChnCountryKeyOfRecipientBank"
+        },
+        "CountryName": {
+          "type": "cds.String",
+          "length": 50,
+          "@EndUserText.label": "CountryName"
+        },
+        "BkChnBankKeyOfRecipientBank": {
+          "type": "cds.String",
+          "length": 15,
+          "@EndUserText.label": "BkChnBankKeyOfRecipientBank"
+        },
+        "BankName": {
           "type": "cds.String",
           "length": 60,
-          "@EndUserText.label": "Medium Description"
+          "@EndUserText.label": "BankName"
         },
-        "TXTLG": {
-          "type": "cds.String",
-          "length": 100,
-          "@EndUserText.label": "Long Description"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0COUNTRY": {
-      "kind": "entity",
-      "@EndUserText.label": "Country Key",
-      "@Analytics.dataCategory": "#DIMENSION",
-      "elements": {
-        "0COUNTRY": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@EndUserText.label": "Country Key"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0COUNTRY_TEXT": {
-      "kind": "entity",
-      "@EndUserText.label": "Text for Country Key",
-      "@Analytics.dataCategory": "#TEXT",
-      "elements": {
-        "0COUNTRY": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@EndUserText.label": "Country Key"
-        },
-        "LANGUAGE_CODE": {
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "@EndUserText.label": "Language"
-        },
-        "TXTMD": {
-          "type": "cds.String",
-          "length": 60,
-          "@EndUserText.label": "Medium Description"
-        },
-        "TXTLG": {
-          "type": "cds.String",
-          "length": 100,
-          "@EndUserText.label": "Long Description"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0REGION": {
-      "kind": "entity",
-      "@EndUserText.label": "Region / State",
-      "@Analytics.dataCategory": "#DIMENSION",
-      "elements": {
-        "0REGION": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@EndUserText.label": "Region / State"
-        },
-        "0COUNTRY": {
-          "type": "cds.String",
-          "length": 10,
-          "@EndUserText.label": "Attribute 0COUNTRY"
-        },
-        "to_0COUNTRY": {
-          "type": "cds.Association",
-          "target": "SAP_BW_MIGRATION.0COUNTRY",
-          "on": [
-            {
-              "ref": [
-                "0COUNTRY"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "to_0COUNTRY",
-                "0COUNTRY"
-              ]
-            }
-          ]
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0REGION_TEXT": {
-      "kind": "entity",
-      "@EndUserText.label": "Text for Region / State",
-      "@Analytics.dataCategory": "#TEXT",
-      "elements": {
-        "0REGION": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@EndUserText.label": "Region / State"
-        },
-        "LANGUAGE_CODE": {
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "@EndUserText.label": "Language"
-        },
-        "TXTMD": {
-          "type": "cds.String",
-          "length": 60,
-          "@EndUserText.label": "Medium Description"
-        },
-        "TXTLG": {
-          "type": "cds.String",
-          "length": 100,
-          "@EndUserText.label": "Long Description"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0MATERIAL": {
-      "kind": "entity",
-      "@EndUserText.label": "Material Number",
-      "@Analytics.dataCategory": "#DIMENSION",
-      "elements": {
-        "0MATERIAL": {
-          "key": true,
+        "BankAccount": {
           "type": "cds.String",
           "length": 18,
-          "@EndUserText.label": "Material Number"
+          "@EndUserText.label": "BankAccount"
         },
-        "0MATL_GROUP": {
+        "BkChnAcctNumberAtRecipientBank": {
           "type": "cds.String",
-          "length": 10,
-          "@EndUserText.label": "Attribute 0MATL_GROUP"
+          "length": 35,
+          "@EndUserText.label": "BkChnAcctNumberAtRecipientBank"
         },
-        "0MATL_TYPE": {
+        "BkChnBankAccountWithReference": {
           "type": "cds.String",
-          "length": 10,
-          "@EndUserText.label": "Attribute 0MATL_TYPE"
+          "length": 35,
+          "@EndUserText.label": "BkChnBankAccountWithReference"
         },
-        "to_0MATL_GROUP": {
-          "type": "cds.Association",
-          "target": "SAP_BW_MIGRATION.0MATL_GROUP",
-          "on": [
-            {
-              "ref": [
-                "0MATL_GROUP"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "to_0MATL_GROUP",
-                "0MATL_GROUP"
-              ]
-            }
-          ]
+        "PartnerBankIBAN": {
+          "type": "cds.String",
+          "length": 34,
+          "@EndUserText.label": "PartnerBankIBAN"
         },
-        "to_0MATL_TYPE": {
-          "type": "cds.Association",
-          "target": "SAP_BW_MIGRATION.0MATL_TYPE",
-          "on": [
-            {
-              "ref": [
-                "0MATL_TYPE"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "to_0MATL_TYPE",
-                "0MATL_TYPE"
-              ]
-            }
-          ]
+        "BankControlKey": {
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "BankControlKey"
+        },
+        "BankAccountReferenceText": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "BankAccountReferenceText"
+        },
+        "BankCountryKey": {
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "BankCountryKey"
         }
       }
     },
-    "SAP_BW_MIGRATION.0MATERIAL_TEXT": {
+    "ZFAP_BANK_CHAIN_SRV_0001_TEXT": {
       "kind": "entity",
-      "@EndUserText.label": "Text for Material Number",
+      "@EndUserText.label": "Text for FAP_BANK_CHAIN_SRV",
       "@Analytics.dataCategory": "#TEXT",
       "elements": {
-        "0MATERIAL": {
+        "ZFAP_BANK_CHAIN_SRV_0001": {
           "key": true,
           "type": "cds.String",
-          "length": 18,
-          "@EndUserText.label": "Material Number"
+          "length": 10,
+          "@EndUserText.label": "FAP_BANK_CHAIN_SRV"
         },
         "LANGUAGE_CODE": {
           "key": true,
           "type": "cds.String",
           "length": 2,
           "@EndUserText.label": "Language"
+        },
+        "TXTSH": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Short Description"
         },
         "TXTMD": {
           "type": "cds.String",
@@ -288,85 +127,189 @@
         }
       }
     },
-    "SAP_BW_MIGRATION.0MATL_GROUP": {
+    "ZFAR_CUSTOMER_LIST_V2_0001": {
       "kind": "entity",
-      "@EndUserText.label": "Material Group",
+      "@EndUserText.label": "FAR_CUSTOMER_LIST_V2",
       "@Analytics.dataCategory": "#DIMENSION",
       "elements": {
-        "0MATL_GROUP": {
+        "ZFAR_CUSTOMER_LIST_V2_0001": {
           "key": true,
           "type": "cds.String",
-          "length": 9,
-          "@EndUserText.label": "Material Group"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0MATL_GROUP_TEXT": {
-      "kind": "entity",
-      "@EndUserText.label": "Text for Material Group",
-      "@Analytics.dataCategory": "#TEXT",
-      "elements": {
-        "0MATL_GROUP": {
-          "key": true,
-          "type": "cds.String",
-          "length": 9,
-          "@EndUserText.label": "Material Group"
+          "length": 20,
+          "@EndUserText.label": "FAR_CUSTOMER_LIST_V2"
         },
-        "LANGUAGE_CODE": {
-          "key": true,
+        "OBJECT_ID": {
           "type": "cds.String",
-          "length": 2,
-          "@EndUserText.label": "Language"
+          "length": 20,
+          "@EndUserText.label": "OBJECT_ID"
         },
-        "TXTMD": {
-          "type": "cds.String",
-          "length": 60,
-          "@EndUserText.label": "Medium Description"
+        "CHANGED_AT": {
+          "type": "cds.Date",
+          "@EndUserText.label": "CHANGED_AT"
         },
-        "TXTLG": {
-          "type": "cds.String",
-          "length": 100,
-          "@EndUserText.label": "Long Description"
-        }
-      }
-    },
-    "SAP_BW_MIGRATION.0AMOUNT": {
-      "kind": "entity",
-      "@EndUserText.label": "Net Amount in Local Currency",
-      "@Analytics.dataCategory": "#MEASURE",
-      "elements": {
-        "0AMOUNT": {
-          "key": true,
+        "AMOUNT": {
           "type": "cds.Decimal",
           "precision": 17,
-          "scale": 0,
-          "@EndUserText.label": "Net Amount in Local Currency"
+          "scale": 2,
+          "@EndUserText.label": "AMOUNT"
         }
       }
     },
-    "SAP_BW_MIGRATION.0QUANTITY": {
+    "ZFAR_CUSTOMER_LIST_V2_0001_TEXT": {
       "kind": "entity",
-      "@EndUserText.label": "Sales Quantity",
-      "@Analytics.dataCategory": "#MEASURE",
+      "@EndUserText.label": "Text for FAR_CUSTOMER_LIST_V2",
+      "@Analytics.dataCategory": "#TEXT",
       "elements": {
-        "0QUANTITY": {
+        "ZFAR_CUSTOMER_LIST_V2_0001": {
           "key": true,
-          "type": "cds.Decimal",
-          "precision": 13,
-          "scale": 0,
-          "@EndUserText.label": "Sales Quantity"
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "FAR_CUSTOMER_LIST_V2"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTSH": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Short Description"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
         }
       }
     },
-    "SAP_BW_MIGRATION.0CALDAY": {
+    "ZFAR_CUSTOMER_LINE_ITEMS_0001": {
       "kind": "entity",
-      "@EndUserText.label": "Calendar Day",
+      "@EndUserText.label": "FAR_CUSTOMER_LINE_ITEMS",
       "@Analytics.dataCategory": "#DIMENSION",
       "elements": {
-        "0CALDAY": {
+        "ZFAR_CUSTOMER_LINE_ITEMS_0001": {
           "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "FAR_CUSTOMER_LINE_ITEMS"
+        },
+        "OBJECT_ID": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "OBJECT_ID"
+        },
+        "CHANGED_AT": {
           "type": "cds.Date",
-          "@EndUserText.label": "Calendar Day"
+          "@EndUserText.label": "CHANGED_AT"
+        },
+        "AMOUNT": {
+          "type": "cds.Decimal",
+          "precision": 17,
+          "scale": 2,
+          "@EndUserText.label": "AMOUNT"
+        }
+      }
+    },
+    "ZFAR_CUSTOMER_LINE_ITEMS_0001_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for FAR_CUSTOMER_LINE_ITEMS",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "ZFAR_CUSTOMER_LINE_ITEMS_0001": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "FAR_CUSTOMER_LINE_ITEMS"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTSH": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Short Description"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "Z_CUSTOMEROUTSTANDINGS_CDS_0001": {
+      "kind": "entity",
+      "@EndUserText.label": "Z_CUSTOMEROUTSTANDINGS_CDS",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "Z_CUSTOMEROUTSTANDINGS_CDS_0001": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Z_CUSTOMEROUTSTANDINGS_CDS"
+        },
+        "OBJECT_ID": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "OBJECT_ID"
+        },
+        "CHANGED_AT": {
+          "type": "cds.Date",
+          "@EndUserText.label": "CHANGED_AT"
+        },
+        "AMOUNT": {
+          "type": "cds.Decimal",
+          "precision": 17,
+          "scale": 2,
+          "@EndUserText.label": "AMOUNT"
+        }
+      }
+    },
+    "Z_CUSTOMEROUTSTANDINGS_CDS_0001_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Z_CUSTOMEROUTSTANDINGS_CDS",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "Z_CUSTOMEROUTSTANDINGS_CDS_0001": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Z_CUSTOMEROUTSTANDINGS_CDS"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTSH": {
+          "type": "cds.String",
+          "length": 20,
+          "@EndUserText.label": "Short Description"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
         }
       }
     }

@@ -6,44 +6,57 @@
       "version": "1.0.0"
     },
     "definitions": {
-      "SAP_BW_MIGRATION.ADSO_SALES_STG": {
+      "ZCUST_OUTSTANDING_SRV_0001": {
         "kind": "entity",
-        "@EndUserText.label": "Sales Inbound Staging DSO",
-        "@Analytics.dataCategory": "#STAGING",
+        "@EndUserText.label": "ZCUST_OUTSTANDING_SRV",
+        "@Analytics.dataCategory": "#FACT",
         "elements": {
-          "VBELN": {
+          "OBJECT_ID": {
             "key": true,
             "type": "cds.String",
             "length": 30,
-            "@EndUserText.label": "Key Field VBELN"
+            "@EndUserText.label": "Key Field OBJECT_ID"
           },
-          "ERDAT": {
+          "CHANGED_AT": {
+            "key": true,
             "type": "cds.String",
-            "precision": 0,
-            "scale": 0,
             "length": 30,
-            "@EndUserText.label": "Data Field ERDAT"
+            "@EndUserText.label": "Key Field CHANGED_AT"
           },
-          "KUNNR": {
-            "type": "cds.String",
-            "precision": 0,
-            "scale": 0,
-            "length": 30,
-            "@EndUserText.label": "Data Field KUNNR"
-          },
-          "NETWR": {
+          "AMOUNT": {
             "type": "cds.Decimal",
             "precision": 17,
             "scale": 2,
-            "length": 0,
-            "@EndUserText.label": "Data Field NETWR"
-          },
-          "WAERK": {
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZCUST_OUTSTANDING_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZCUST_OUTSTANDING_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
             "type": "cds.String",
-            "precision": 0,
-            "scale": 0,
             "length": 30,
-            "@EndUserText.label": "Data Field WAERK"
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
           }
         }
       }
@@ -56,43 +69,1831 @@
       "version": "1.0.0"
     },
     "definitions": {
-      "SAP_BW_MIGRATION.ADSO_SALES_CUBE": {
+      "ZSALES_ORD_CRE_CHECK_SRV_0001": {
         "kind": "entity",
-        "@EndUserText.label": "Sales Cube ADSO",
+        "@EndUserText.label": "ZSALES_ORD_CRE_CHECK_SRV",
         "@Analytics.dataCategory": "#FACT",
         "elements": {
-          "0CUSTOMER": {
+          "OBJECT_ID": {
             "key": true,
             "type": "cds.String",
             "length": 30,
-            "@EndUserText.label": "Key Field 0CUSTOMER"
+            "@EndUserText.label": "Key Field OBJECT_ID"
           },
-          "0CALDAY": {
+          "CHANGED_AT": {
             "key": true,
             "type": "cds.String",
             "length": 30,
-            "@EndUserText.label": "Key Field 0CALDAY"
+            "@EndUserText.label": "Key Field CHANGED_AT"
           },
-          "0MATERIAL": {
-            "type": "cds.String",
-            "precision": 0,
-            "scale": 0,
-            "length": 30,
-            "@EndUserText.label": "Data Field 0MATERIAL"
-          },
-          "0AMOUNT": {
+          "AMOUNT": {
             "type": "cds.Decimal",
             "precision": 17,
             "scale": 2,
-            "length": 0,
-            "@EndUserText.label": "Data Field 0AMOUNT"
-          },
-          "0QUANTITY": {
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZSALES_ORD_CRE_CHECK_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZSALES_ORD_CRE_CHECK_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
             "type": "cds.String",
-            "precision": 0,
-            "scale": 0,
             "length": 30,
-            "@EndUserText.label": "Data Field 0QUANTITY"
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZSUPP_OUTSTANDING_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "ZSUPP_OUTSTANDING_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZSUPP_OUTSTANDING_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZSUPP_OUTSTANDING_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZMAT_HIGHEST_STOCK_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "ZMAT_HIGHEST_STOCK_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZMAT_HIGHEST_STOCK_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZMAT_HIGHEST_STOCK_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZSALES_ORD_STATUS_ENQ_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "ZSALES_ORD_STATUS_ENQ_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZSALES_ORD_STATUS_ENQ_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZSALES_ORD_STATUS_ENQ_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZAPS_EXT_DEP_INVENTORY_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "APS_EXT_DEP_INVENTORY_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "ItemType": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ItemType"
+          },
+          "ItemId": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ItemId"
+          },
+          "ItemTypeDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemTypeDescription"
+          },
+          "ItemTypeSAPIconName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemTypeSAPIconName"
+          },
+          "ItemDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemDescription"
+          },
+          "Action": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Action"
+          },
+          "ActionDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ActionDescription"
+          },
+          "ExecutedAt": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedAt"
+          },
+          "ExecutedBy": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedBy"
+          },
+          "ExecutedByDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedByDescription"
+          },
+          "SoftwareCollectionId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionId"
+          },
+          "SoftwareCollectionDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionDescription"
+          },
+          "SoftwareCollectionVersion": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionVersion"
+          }
+        }
+      },
+      "ZAPS_EXT_DEP_INVENTORY_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for APS_EXT_DEP_INVENTORY_SRV",
+        "elements": {
+          "ItemType": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ItemType"
+          },
+          "ItemId": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ItemId"
+          },
+          "ItemTypeDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemTypeDescription"
+          },
+          "ItemTypeSAPIconName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemTypeSAPIconName"
+          },
+          "ItemDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemDescription"
+          },
+          "Action": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Action"
+          },
+          "ActionDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ActionDescription"
+          },
+          "ExecutedAt": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedAt"
+          },
+          "ExecutedBy": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedBy"
+          },
+          "ExecutedByDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExecutedByDescription"
+          },
+          "SoftwareCollectionId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionId"
+          },
+          "SoftwareCollectionDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionDescription"
+          },
+          "SoftwareCollectionVersion": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoftwareCollectionVersion"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZSBLE_BADI_CTX_REGISTRY_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "SBLE_BADI_CTX_REGISTRY_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "BusinessContext": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field BusinessContext"
+          },
+          "Description": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field Description"
+          },
+          "Availability": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Availability"
+          },
+          "ReleaseStatus": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ReleaseStatus"
+          },
+          "BadiName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiName"
+          },
+          "BadiDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiDescription"
+          },
+          "SpotName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SpotName"
+          },
+          "Owner": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Owner"
+          },
+          "Timestamp": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Timestamp"
+          },
+          "BadiDefName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiDefName"
+          },
+          "Data": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Data"
+          }
+        }
+      },
+      "ZSBLE_BADI_CTX_REGISTRY_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for SBLE_BADI_CTX_REGISTRY_SRV",
+        "elements": {
+          "BusinessContext": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field BusinessContext"
+          },
+          "Description": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field Description"
+          },
+          "Availability": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Availability"
+          },
+          "ReleaseStatus": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ReleaseStatus"
+          },
+          "BadiName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiName"
+          },
+          "BadiDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiDescription"
+          },
+          "SpotName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SpotName"
+          },
+          "Owner": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Owner"
+          },
+          "Timestamp": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Timestamp"
+          },
+          "BadiDefName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiDefName"
+          },
+          "Data": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Data"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZAPS_CUSTOM_FIELD_MAINTENANCE_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "APS_CUSTOM_FIELD_MAINTENANCE_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "InternalName": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field InternalName"
+          },
+          "PendingDeletion": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field PendingDeletion"
+          },
+          "SoapNamespace": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoapNamespace"
+          },
+          "NumberOfUsages": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field NumberOfUsages"
+          },
+          "SectionKind": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SectionKind"
+          },
+          "Section": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Section"
+          },
+          "IsEnabled": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field IsEnabled"
+          },
+          "IsEditable": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field IsEditable"
+          },
+          "BusinessObjectIdentifier": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectIdentifier"
+          },
+          "BusinessObjectDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectDescription"
+          },
+          "BusinessObjectKind": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectKind"
+          },
+          "BusinessObjectScenarioId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectScenarioId"
+          },
+          "DataSubjectIdType": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DataSubjectIdType"
+          },
+          "BadiImplForDataSubject": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiImplForDataSubject"
+          },
+          "AvailabilityCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field AvailabilityCode"
+          }
+        }
+      },
+      "ZAPS_CUSTOM_FIELD_MAINTENANCE_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for APS_CUSTOM_FIELD_MAINTENANCE_SRV",
+        "elements": {
+          "InternalName": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field InternalName"
+          },
+          "PendingDeletion": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field PendingDeletion"
+          },
+          "SoapNamespace": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SoapNamespace"
+          },
+          "NumberOfUsages": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field NumberOfUsages"
+          },
+          "SectionKind": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SectionKind"
+          },
+          "Section": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Section"
+          },
+          "IsEnabled": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field IsEnabled"
+          },
+          "IsEditable": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field IsEditable"
+          },
+          "BusinessObjectIdentifier": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectIdentifier"
+          },
+          "BusinessObjectDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectDescription"
+          },
+          "BusinessObjectKind": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectKind"
+          },
+          "BusinessObjectScenarioId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BusinessObjectScenarioId"
+          },
+          "DataSubjectIdType": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DataSubjectIdType"
+          },
+          "BadiImplForDataSubject": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field BadiImplForDataSubject"
+          },
+          "AvailabilityCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field AvailabilityCode"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZUI_SCLG_IMPLEMENTATION_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "UI_SCLG_IMPLEMENTATION",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "createImplementation_ac": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field createImplementation_ac"
+          },
+          "deleteImplementation_ac": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field deleteImplementation_ac"
+          },
+          "publishImplementation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field publishImplementation_ac"
+          },
+          "retryLastOperation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field retryLastOperation_ac"
+          },
+          "updateImplementation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field updateImplementation_ac"
+          },
+          "ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ID"
+          },
+          "Type": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Type"
+          },
+          "Description": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Description"
+          },
+          "ExtensionPointDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointDescription"
+          },
+          "ExtensionPointID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointID"
+          },
+          "ExtensionPointType": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointType"
+          },
+          "Status": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Status"
+          },
+          "StatusColor": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field StatusColor"
+          },
+          "StatusDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field StatusDescription"
+          },
+          "LastChangedBy": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field LastChangedBy"
+          }
+        }
+      },
+      "ZUI_SCLG_IMPLEMENTATION_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for UI_SCLG_IMPLEMENTATION",
+        "elements": {
+          "createImplementation_ac": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field createImplementation_ac"
+          },
+          "deleteImplementation_ac": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field deleteImplementation_ac"
+          },
+          "publishImplementation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field publishImplementation_ac"
+          },
+          "retryLastOperation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field retryLastOperation_ac"
+          },
+          "updateImplementation_ac": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field updateImplementation_ac"
+          },
+          "ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ID"
+          },
+          "Type": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Type"
+          },
+          "Description": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Description"
+          },
+          "ExtensionPointDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointDescription"
+          },
+          "ExtensionPointID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointID"
+          },
+          "ExtensionPointType": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ExtensionPointType"
+          },
+          "Status": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Status"
+          },
+          "StatusColor": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field StatusColor"
+          },
+          "StatusDescription": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field StatusDescription"
+          },
+          "LastChangedBy": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field LastChangedBy"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZEPM_REF_APPS_PO_APV_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "EPM_REF_APPS_PO_APV_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "POId": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field POId"
+          },
+          "OrderedById": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OrderedById"
+          },
+          "OrderedByName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field OrderedByName"
+          },
+          "ChangedAt": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ChangedAt"
+          },
+          "SupplierId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SupplierId"
+          },
+          "SupplierName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SupplierName"
+          },
+          "DeliveryAddress": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DeliveryAddress"
+          },
+          "DeliveryDateEarliest": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DeliveryDateEarliest"
+          },
+          "LaterDelivDateExist": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field LaterDelivDateExist"
+          },
+          "GrossAmount": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field GrossAmount"
+          },
+          "CurrencyCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field CurrencyCode"
+          },
+          "ItemCount": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemCount"
+          },
+          "Supplier": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Supplier"
+          },
+          "PurchaseOrderItems": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field PurchaseOrderItems"
+          }
+        }
+      },
+      "ZEPM_REF_APPS_PO_APV_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for EPM_REF_APPS_PO_APV_SRV",
+        "elements": {
+          "POId": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field POId"
+          },
+          "OrderedById": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OrderedById"
+          },
+          "OrderedByName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field OrderedByName"
+          },
+          "ChangedAt": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ChangedAt"
+          },
+          "SupplierId": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SupplierId"
+          },
+          "SupplierName": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field SupplierName"
+          },
+          "DeliveryAddress": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DeliveryAddress"
+          },
+          "DeliveryDateEarliest": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field DeliveryDateEarliest"
+          },
+          "LaterDelivDateExist": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field LaterDelivDateExist"
+          },
+          "GrossAmount": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field GrossAmount"
+          },
+          "CurrencyCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field CurrencyCode"
+          },
+          "ItemCount": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field ItemCount"
+          },
+          "Supplier": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Supplier"
+          },
+          "PurchaseOrderItems": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field PurchaseOrderItems"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZLOCK_USER_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "ZLOCK_USER_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "ZLOCK_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ZLOCK_ID"
+          },
+          "Action": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field Action"
+          },
+          "Status": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Status"
+          }
+        }
+      },
+      "ZLOCK_USER_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZLOCK_USER_SRV",
+        "elements": {
+          "ZLOCK_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field ZLOCK_ID"
+          },
+          "Action": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field Action"
+          },
+          "Status": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field Status"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_DISP_PAYMENT_CARD_DATA_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_DISP_PAYMENT_CARD_DATA_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "HierarchyNode": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field HierarchyNode"
+          },
+          "UniversalHierarchy": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field UniversalHierarchy"
+          },
+          "HierarchyNodeClass": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeClass"
+          },
+          "ValidityEndDate": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field ValidityEndDate"
+          },
+          "HierarchyNodeText": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeText"
+          },
+          "HierarchyNodeTechnicalID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeTechnicalID"
+          },
+          "HierarchyParentNodeTechnicalID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyParentNodeTechnicalID"
+          },
+          "HierarchyDistanceFromRoot": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDistanceFromRoot"
+          },
+          "HierarchyDescendantCount": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDescendantCount"
+          },
+          "HierarchyDrillState": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDrillState"
+          },
+          "HierarchyNodeOrdinalNumber": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeOrdinalNumber"
+          },
+          "CompanyCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field CompanyCode"
+          },
+          "AccountingDocument": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field AccountingDocument"
+          },
+          "FiscalYear": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field FiscalYear"
+          },
+          "PaymentCardItem": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field PaymentCardItem"
+          }
+        }
+      },
+      "ZFAR_DISP_PAYMENT_CARD_DATA_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_DISP_PAYMENT_CARD_DATA_SRV",
+        "elements": {
+          "HierarchyNode": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field HierarchyNode"
+          },
+          "UniversalHierarchy": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field UniversalHierarchy"
+          },
+          "HierarchyNodeClass": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeClass"
+          },
+          "ValidityEndDate": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field ValidityEndDate"
+          },
+          "HierarchyNodeText": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeText"
+          },
+          "HierarchyNodeTechnicalID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeTechnicalID"
+          },
+          "HierarchyParentNodeTechnicalID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyParentNodeTechnicalID"
+          },
+          "HierarchyDistanceFromRoot": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDistanceFromRoot"
+          },
+          "HierarchyDescendantCount": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDescendantCount"
+          },
+          "HierarchyDrillState": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyDrillState"
+          },
+          "HierarchyNodeOrdinalNumber": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field HierarchyNodeOrdinalNumber"
+          },
+          "CompanyCode": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field CompanyCode"
+          },
+          "AccountingDocument": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field AccountingDocument"
+          },
+          "FiscalYear": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field FiscalYear"
+          },
+          "PaymentCardItem": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Data Field PaymentCardItem"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZUI_DGTLPAYT_REFUND_02_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "UI_DGTLPAYT_REFUND_02",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZUI_DGTLPAYT_REFUND_02_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for UI_DGTLPAYT_REFUND_02",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_MY_DUNNING_PROPOSAL_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_MY_DUNNING_PROPOSAL_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZFAR_MY_DUNNING_PROPOSAL_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_MY_DUNNING_PROPOSAL_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_DUNNING_HISTORY_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_DUNNING_HISTORY_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZFAR_DUNNING_HISTORY_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_DUNNING_HISTORY_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_DOUBTFUL_ACCTS_VALUATION_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_DOUBTFUL_ACCTS_VALUATION_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZFAR_DOUBTFUL_ACCTS_VALUATION_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_DOUBTFUL_ACCTS_VALUATION_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_BAD_DEBT_RESERVE_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_BAD_DEBT_RESERVE_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZFAR_BAD_DEBT_RESERVE_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_BAD_DEBT_RESERVE_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZFAR_DISP_PROCESS_FLOW_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "FAR_DISP_PROCESS_FLOW_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZFAR_DISP_PROCESS_FLOW_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for FAR_DISP_PROCESS_FLOW_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "Z_ODATA_1_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "Z_ODATA_1_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "Z_ODATA_1_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for Z_ODATA_1_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "ZODATA_2_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "ZODATA_2_SRV",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          }
+        }
+      },
+      "ZODATA_2_SRV_0001_CHANGELOG": {
+        "kind": "entity",
+        "@EndUserText.label": "Change Log Audit for ZODATA_2_SRV",
+        "elements": {
+          "OBJECT_ID": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field OBJECT_ID"
+          },
+          "CHANGED_AT": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field CHANGED_AT"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "Data Field AMOUNT"
+          },
+          "RECORDMODE": {
+            "type": "cds.String",
+            "length": 1,
+            "@EndUserText.label": "BW Delta Record Mode"
           }
         }
       }

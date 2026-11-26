@@ -6,14 +6,27 @@
       "version": "1.0.0"
     },
     "definitions": {
-      "SAP_BW_MIGRATION.V_DS_SALES_HEADER_TO_ADSO_SALES_STG": {
+      "V_ZAPI_PAYMENT_ADVICE_SRV_0001_TO_ZAPS_EXT_DEP_INVENTORY_SRV_0001": {
         "kind": "entity",
-        "@EndUserText.label": "View for TR_DS_TO_STG (DS_SALES_HEADER -> ADSO_SALES_STG)",
+        "@EndUserText.label": "View for TR_ZAPI_PAYMENT_AD_TO_ZAPS_EXT_DEP_IN (ZAPI_PAYMENT_ADVICE_SRV_0001 -> ZAPS_EXT_DEP_INVENTORY_SRV_0001)",
         "@Analytics.dataCategory": "#CUBE",
-        "query": "SELECT\n    \"VBELN\" AS \"VBELN\",\n    \"ERDAT\" AS \"ERDAT\",\n    \"KUNNR\" AS \"KUNNR\",\n    \"NETWR\" AS \"NETWR\",\n    \"WAERK\" AS \"WAERK\"\nFROM \"SAP_BW_MIGRATION\".\"DS_SALES_HEADER\"",
+        "elements": {
+          "OBJECT_ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "OBJECT_ID"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "AMOUNT"
+          }
+        },
+        "query": "SELECT\n    \"OBJECT_ID\" AS \"OBJECT_ID\",\n    CASE WHEN AMOUNT > 0 THEN AMOUNT ELSE 0 END AS \"AMOUNT\"\nFROM \"ZAPI_PAYMENT_ADVICE_SRV_0001\"",
         "migration_metadata": {
-          "tran_id": "TR_DS_TO_STG",
-          "rule_type": "DIRECT",
+          "tran_id": "TR_ZAPI_PAYMENT_AD_TO_ZAPS_EXT_DEP_IN",
+          "rule_type": "FORMULA",
           "warnings": []
         }
       }
@@ -26,14 +39,93 @@
       "version": "1.0.0"
     },
     "definitions": {
-      "SAP_BW_MIGRATION.V_ADSO_SALES_STG_TO_ADSO_SALES_CUBE": {
+      "V_ZAPS_DATA_SOURCE_EXTENSION_SRV_0001_TO_ZSBLE_BADI_CTX_REGISTRY_SRV_0001": {
         "kind": "entity",
-        "@EndUserText.label": "View for TR_STG_TO_CUBE (ADSO_SALES_STG -> ADSO_SALES_CUBE)",
+        "@EndUserText.label": "View for TR_ZAPS_DATA_SOURC_TO_ZSBLE_BADI_CTX_ (ZAPS_DATA_SOURCE_EXTENSION_SRV_0001 -> ZSBLE_BADI_CTX_REGISTRY_SRV_0001)",
         "@Analytics.dataCategory": "#CUBE",
-        "query": "SELECT\n    \"KUNNR\" AS \"0CUSTOMER\",\n    \"ERDAT\" AS \"0CALDAY\",\n    CASE WHEN NETWR > 0 THEN NETWR ELSE 0 END AS \"0AMOUNT\"\nFROM \"SAP_BW_MIGRATION\".\"ADSO_SALES_STG\"\nWHERE NOT ((KUNNR IS NULL OR KUNNR = '') OR KUNNR = '0000000000')",
+        "elements": {
+          "OBJECT_ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "OBJECT_ID"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "AMOUNT"
+          }
+        },
+        "query": "SELECT\n    \"OBJECT_ID\" AS \"OBJECT_ID\",\n    CASE WHEN AMOUNT > 0 THEN AMOUNT ELSE 0 END AS \"AMOUNT\"\nFROM \"ZAPS_DATA_SOURCE_EXTENSION_SRV_0001\"",
         "migration_metadata": {
-          "tran_id": "TR_STG_TO_CUBE",
-          "rule_type": "ROUTINE",
+          "tran_id": "TR_ZAPS_DATA_SOURC_TO_ZSBLE_BADI_CTX_",
+          "rule_type": "FORMULA",
+          "warnings": []
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "V_ZCDS_INPUT_PARAM_CDS_0001_TO_ZAPS_CUSTOM_FIELD_MAINTENANCE_SRV_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "View for TR_ZCDS_INPUT_PARA_TO_ZAPS_CUSTOM_FIE (ZCDS_INPUT_PARAM_CDS_0001 -> ZAPS_CUSTOM_FIELD_MAINTENANCE_SRV_0001)",
+        "@Analytics.dataCategory": "#CUBE",
+        "elements": {
+          "OBJECT_ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "OBJECT_ID"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "AMOUNT"
+          }
+        },
+        "query": "SELECT\n    \"OBJECT_ID\" AS \"OBJECT_ID\",\n    CASE WHEN AMOUNT > 0 THEN AMOUNT ELSE 0 END AS \"AMOUNT\"\nFROM \"ZCDS_INPUT_PARAM_CDS_0001\"",
+        "migration_metadata": {
+          "tran_id": "TR_ZCDS_INPUT_PARA_TO_ZAPS_CUSTOM_FIE",
+          "rule_type": "FORMULA",
+          "warnings": []
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "V_ZFIRST_CDS_CDS_0001_TO_ZUI_SCLG_IMPLEMENTATION_0001": {
+        "kind": "entity",
+        "@EndUserText.label": "View for TR_ZFIRST_CDS_CDS__TO_ZUI_SCLG_IMPLEM (ZFIRST_CDS_CDS_0001 -> ZUI_SCLG_IMPLEMENTATION_0001)",
+        "@Analytics.dataCategory": "#CUBE",
+        "elements": {
+          "OBJECT_ID": {
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "OBJECT_ID"
+          },
+          "AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "@EndUserText.label": "AMOUNT"
+          }
+        },
+        "query": "SELECT\n    \"OBJECT_ID\" AS \"OBJECT_ID\",\n    CASE WHEN AMOUNT > 0 THEN AMOUNT ELSE 0 END AS \"AMOUNT\"\nFROM \"ZFIRST_CDS_CDS_0001\"",
+        "migration_metadata": {
+          "tran_id": "TR_ZFIRST_CDS_CDS__TO_ZUI_SCLG_IMPLEM",
+          "rule_type": "FORMULA",
           "warnings": []
         }
       }

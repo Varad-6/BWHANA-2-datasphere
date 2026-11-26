@@ -3,14 +3,19 @@ T2: Object Classifier & Complexity Scorer
 Evaluates object complexity (1-5 scale) and tags objects with their target migration path (Paths 1-7).
 """
 
+from typing import Any, Dict
+
+
 class ObjectClassifier:
-    def __init__(self, repo_manager):
+    """Classifies BW/S4 objects into Paths 1-7 and assigns 1-5 complexity scores."""
+
+    def __init__(self, repo_manager: Any) -> None:
         self.repo = repo_manager
 
-    def classify_and_score(self):
-        """Scores objects in repository and updates migration path tags."""
+    def classify_and_score(self) -> Dict[str, int]:
+        """Score objects in repository and update migration path tags."""
         objects = self.repo.get_all_objects()
-        summary = {"Path 1": 0, "Path 2": 0, "Path 3": 0, "Path 4": 0, "Path 5": 0, "Path 6": 0, "Path 7": 0}
+        summary: Dict[str, int] = {f"Path {i}": 0 for i in range(1, 8)}
 
         for obj in objects:
             tech_name = obj["tech_name"]
@@ -27,9 +32,9 @@ class ObjectClassifier:
                 path = "Path 2"
                 num_attrs = len(meta.get("attributes", []))
                 num_comp = len(meta.get("compounding", []))
-                has_hier = meta.get("has_hierarchies", False)
+                has_hier = bool(meta.get("has_hierarchies", False))
                 score = 1 + (1 if num_attrs > 0 else 0) + (1 if num_comp > 0 else 0) + (2 if has_hier else 0)
-                score = min(score, 5)
+                score = min(max(score, 1), 5)
             elif obj_type == "TRANSFORMATION":
                 path = "Path 3"
                 num_routines = len(meta.get("routines_abap", []))
@@ -40,15 +45,18 @@ class ObjectClassifier:
                     score = 2
                 else:
                     score = 1
-            elif obj_type == "ADSO":
+            elif obj_type in ["ADSO", "DSO", "INFOCUBE"]:
                 path = "Path 4"
-                adso_type = meta.get("adso_type", "STANDARD")
-                num_fields = len(meta.get("fields", []))
-                score = 2 if adso_type == "STAGING" else (3 if num_fields < 15 else 4)
-            elif obj_type == "COMPOSITE_PROVIDER":
+                if obj_type == "INFOCUBE":
+                    score = 4
+                else:
+                    adso_type = meta.get("adso_type", "STANDARD")
+                    num_fields = len(meta.get("fields", []))
+                    score = 2 if adso_type == "STAGING" else (3 if num_fields < 15 else 4)
+            elif obj_type in ["COMPOSITE_PROVIDER", "MULTIPROVIDER"]:
                 path = "Path 5"
                 num_sources = len(meta.get("sources", []))
-                score = 2 if num_sources <= 1 else 3
+                score = 2 if num_sources <= 1 else (3 if num_sources == 2 else 4)
             elif obj_type == "BEX_QUERY":
                 path = "Path 6"
                 num_vars = len(meta.get("variables", []))
@@ -59,14 +67,16 @@ class ObjectClassifier:
 
             summary[path] = summary.get(path, 0) + 1
 
-            # Update repository
             self.repo.insert_object(
                 tech_name=tech_name,
                 object_type=obj_type,
                 description=obj["description"],
                 complexity_score=score,
                 migration_path=path,
-                raw_metadata=meta
+                raw_metadata=meta,
+                status=obj.get("status", "PENDING"),
+                warning_code=obj.get("warning_code"),
+                wave_id=obj.get("wave_id"),
             )
 
         return summary
