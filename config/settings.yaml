@@ -1,0 +1,21 @@
+project:
+  name: "BW4HANA to SAP Datasphere Migration Accelerator"
+  version: "1.0.0"
+  target_space: "DEV_SPACE_01"
+
+repository:
+  type: "duckdb"
+  db_path: "metadata_repo.db"
+
+reconciliation:
+  tolerance_percentage: 0.01
+  sample_rows: 10000
+
+complexity_thresholds:
+  path_1: 1
+  path_2: 2
+  path_3: 4
+  path_4: 3
+  path_5: 3
+  path_6: 3
+  path_7: 2

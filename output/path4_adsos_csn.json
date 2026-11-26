@@ -1,0 +1,101 @@
+[
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "SAP_BW_MIGRATION.ADSO_SALES_STG": {
+        "kind": "entity",
+        "@EndUserText.label": "Sales Inbound Staging DSO",
+        "@Analytics.dataCategory": "#STAGING",
+        "elements": {
+          "VBELN": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field VBELN"
+          },
+          "ERDAT": {
+            "type": "cds.String",
+            "precision": 0,
+            "scale": 0,
+            "length": 30,
+            "@EndUserText.label": "Data Field ERDAT"
+          },
+          "KUNNR": {
+            "type": "cds.String",
+            "precision": 0,
+            "scale": 0,
+            "length": 30,
+            "@EndUserText.label": "Data Field KUNNR"
+          },
+          "NETWR": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "length": 0,
+            "@EndUserText.label": "Data Field NETWR"
+          },
+          "WAERK": {
+            "type": "cds.String",
+            "precision": 0,
+            "scale": 0,
+            "length": 30,
+            "@EndUserText.label": "Data Field WAERK"
+          }
+        }
+      }
+    }
+  },
+  {
+    "$schema": "https://sap.com/csn/v1",
+    "meta": {
+      "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+      "version": "1.0.0"
+    },
+    "definitions": {
+      "SAP_BW_MIGRATION.ADSO_SALES_CUBE": {
+        "kind": "entity",
+        "@EndUserText.label": "Sales Cube ADSO",
+        "@Analytics.dataCategory": "#FACT",
+        "elements": {
+          "0CUSTOMER": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field 0CUSTOMER"
+          },
+          "0CALDAY": {
+            "key": true,
+            "type": "cds.String",
+            "length": 30,
+            "@EndUserText.label": "Key Field 0CALDAY"
+          },
+          "0MATERIAL": {
+            "type": "cds.String",
+            "precision": 0,
+            "scale": 0,
+            "length": 30,
+            "@EndUserText.label": "Data Field 0MATERIAL"
+          },
+          "0AMOUNT": {
+            "type": "cds.Decimal",
+            "precision": 17,
+            "scale": 2,
+            "length": 0,
+            "@EndUserText.label": "Data Field 0AMOUNT"
+          },
+          "0QUANTITY": {
+            "type": "cds.String",
+            "precision": 0,
+            "scale": 0,
+            "length": 30,
+            "@EndUserText.label": "Data Field 0QUANTITY"
+          }
+        }
+      }
+    }
+  }
+]

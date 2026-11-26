@@ -1,0 +1,374 @@
+{
+  "$schema": "https://sap.com/csn/v1",
+  "meta": {
+    "creator": "BW4HANA-Datasphere-Migration-Accelerator",
+    "version": "1.0.0"
+  },
+  "definitions": {
+    "SAP_BW_MIGRATION.0CUSTOMER": {
+      "kind": "entity",
+      "@EndUserText.label": "Customer Number",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0CUSTOMER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Customer Number"
+        },
+        "0COUNTRY": {
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Attribute 0COUNTRY"
+        },
+        "0REGION": {
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Attribute 0REGION"
+        },
+        "to_0COUNTRY": {
+          "type": "cds.Association",
+          "target": "SAP_BW_MIGRATION.0COUNTRY",
+          "on": [
+            {
+              "ref": [
+                "0COUNTRY"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "to_0COUNTRY",
+                "0COUNTRY"
+              ]
+            }
+          ]
+        },
+        "to_0REGION": {
+          "type": "cds.Association",
+          "target": "SAP_BW_MIGRATION.0REGION",
+          "on": [
+            {
+              "ref": [
+                "0REGION"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "to_0REGION",
+                "0REGION"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0CUSTOMER_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Customer Number",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "0CUSTOMER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Customer Number"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0COUNTRY": {
+      "kind": "entity",
+      "@EndUserText.label": "Country Key",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0COUNTRY": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "Country Key"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0COUNTRY_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Country Key",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "0COUNTRY": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "Country Key"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0REGION": {
+      "kind": "entity",
+      "@EndUserText.label": "Region / State",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0REGION": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "Region / State"
+        },
+        "0COUNTRY": {
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Attribute 0COUNTRY"
+        },
+        "to_0COUNTRY": {
+          "type": "cds.Association",
+          "target": "SAP_BW_MIGRATION.0COUNTRY",
+          "on": [
+            {
+              "ref": [
+                "0COUNTRY"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "to_0COUNTRY",
+                "0COUNTRY"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0REGION_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Region / State",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "0REGION": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@EndUserText.label": "Region / State"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0MATERIAL": {
+      "kind": "entity",
+      "@EndUserText.label": "Material Number",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0MATERIAL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "@EndUserText.label": "Material Number"
+        },
+        "0MATL_GROUP": {
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Attribute 0MATL_GROUP"
+        },
+        "0MATL_TYPE": {
+          "type": "cds.String",
+          "length": 10,
+          "@EndUserText.label": "Attribute 0MATL_TYPE"
+        },
+        "to_0MATL_GROUP": {
+          "type": "cds.Association",
+          "target": "SAP_BW_MIGRATION.0MATL_GROUP",
+          "on": [
+            {
+              "ref": [
+                "0MATL_GROUP"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "to_0MATL_GROUP",
+                "0MATL_GROUP"
+              ]
+            }
+          ]
+        },
+        "to_0MATL_TYPE": {
+          "type": "cds.Association",
+          "target": "SAP_BW_MIGRATION.0MATL_TYPE",
+          "on": [
+            {
+              "ref": [
+                "0MATL_TYPE"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "to_0MATL_TYPE",
+                "0MATL_TYPE"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0MATERIAL_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Material Number",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "0MATERIAL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "@EndUserText.label": "Material Number"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0MATL_GROUP": {
+      "kind": "entity",
+      "@EndUserText.label": "Material Group",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0MATL_GROUP": {
+          "key": true,
+          "type": "cds.String",
+          "length": 9,
+          "@EndUserText.label": "Material Group"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0MATL_GROUP_TEXT": {
+      "kind": "entity",
+      "@EndUserText.label": "Text for Material Group",
+      "@Analytics.dataCategory": "#TEXT",
+      "elements": {
+        "0MATL_GROUP": {
+          "key": true,
+          "type": "cds.String",
+          "length": 9,
+          "@EndUserText.label": "Material Group"
+        },
+        "LANGUAGE_CODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@EndUserText.label": "Language"
+        },
+        "TXTMD": {
+          "type": "cds.String",
+          "length": 60,
+          "@EndUserText.label": "Medium Description"
+        },
+        "TXTLG": {
+          "type": "cds.String",
+          "length": 100,
+          "@EndUserText.label": "Long Description"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0AMOUNT": {
+      "kind": "entity",
+      "@EndUserText.label": "Net Amount in Local Currency",
+      "@Analytics.dataCategory": "#MEASURE",
+      "elements": {
+        "0AMOUNT": {
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 17,
+          "scale": 0,
+          "@EndUserText.label": "Net Amount in Local Currency"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0QUANTITY": {
+      "kind": "entity",
+      "@EndUserText.label": "Sales Quantity",
+      "@Analytics.dataCategory": "#MEASURE",
+      "elements": {
+        "0QUANTITY": {
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 0,
+          "@EndUserText.label": "Sales Quantity"
+        }
+      }
+    },
+    "SAP_BW_MIGRATION.0CALDAY": {
+      "kind": "entity",
+      "@EndUserText.label": "Calendar Day",
+      "@Analytics.dataCategory": "#DIMENSION",
+      "elements": {
+        "0CALDAY": {
+          "key": true,
+          "type": "cds.Date",
+          "@EndUserText.label": "Calendar Day"
+        }
+      }
+    }
+  }
+}
